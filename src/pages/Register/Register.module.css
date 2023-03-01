@@ -1,0 +1,58 @@
+.form {
+    border-radius: .5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form h3 {
+    text-align: center;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: 1rem .75rem;
+    background-color: var(--white-15);
+    border: 1px solid var(--white-15);
+    border-radius: .6rem;
+}
+
+.icon {
+    width: 1.45rem;
+    aspect-ratio: 1/1;
+    background-color: var(--white-75);
+    padding: .5rem;
+    border-radius: 50%;
+    filter: 
+        invert(100%)
+        sepia(0%)
+        saturate(7500%)
+        hue-rotate(303deg)
+        brightness(130%)
+        contrast(125%);
+}
+
+.label {
+    width: 80%;
+}
+
+.label input {
+    width: 100%;
+    padding: .3rem;
+    color: var(--white);
+    border-bottom: 1px solid var(--white-50);
+    background-color: transparent;
+    font-weight: 600;
+    caret-color: var(--white);
+} 
+.label input:focus {
+    border-bottom: 1px solid var(--white);
+}
+.label input::placeholder {
+    color: var(--white-75);
+}
+
+.form button {
+    margin: 1.5rem 0 1rem 0;
+}

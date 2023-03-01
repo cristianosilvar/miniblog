@@ -1,10 +1,39 @@
 .container {
     width: clamp(400px, 90%, 1440px);
     margin-inline: auto;
-    min-height: 60vh;
+    margin-top: 6rem;
+    min-height: 80vh;
 }
 
 .active {
     color: var(--white) !important;
     font-weight: 600 !important;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: clamp(300px, 30%, 432px);
+    margin-inline: auto;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+}
+
+.button_primary {
+    background-color: var(--white);
+    border: 1px solid transparent;
+    color: var(--primary);
+} .button_primary:hover {
+    background-color: var(--white-15);
+    border: 1px solid var(--white-50);
+    color: var(--white);
+}
+
+.button_text {
+    padding: .3rem;
+    font-size: .9rem;
+    transition: all .4s;
+} .button_text:hover {
+    background-color: var(--white-15);
+    border-top: 1px solid var(--white-75);
 }

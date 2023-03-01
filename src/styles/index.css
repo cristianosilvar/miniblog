@@ -23,11 +23,20 @@ body {
   min-height: 60vh;
 }
 
-input {
+input, button, select {
   font-family: 'Poppins', sans-serif;
+  border: 1px solid transparent;
 }
-input:focus {
+input:focus, button:focus, select:focus {
   outline: none;
+}
+
+button {
+  cursor: pointer;
+  padding: .5rem 2.3rem;
+  font-weight: 400;
+  border-radius: 3rem;
+  transition: background .3s linear;
 }
 
 a {
@@ -35,6 +44,9 @@ a {
   text-decoration: none;
 }
 
+.text-center {text-align: center;}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
 
 ::-webkit-scrollbar { width: .35rem; }
 ::-webkit-scrollbar-track { background-color: var(--white-15); }

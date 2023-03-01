@@ -20,7 +20,9 @@ export default function NavBar() {
                 <NavLink to='/about' className={style.link}>Sobre</NavLink>
             </nav>
             <nav className={style.nav}>
-                <Link to='/login' className={style.button_login}>Login</Link>
+                <Link to='/login'>
+                   <button className='button_primary'>Login</button> 
+                </Link>
             </nav>
         </header>
     )
