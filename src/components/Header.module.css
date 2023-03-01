@@ -1,0 +1,47 @@
+.header {
+    width: clamp(400px, 90%, 1440px);
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--white-15);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.logo > span {
+    font-weight: 200;
+    font-size: 1.25rem;
+}
+
+.nav > .link {
+    font-weight: 400;
+    padding: .5rem 1.5rem;
+    border: 1px solid transparent;
+    transition: .1s linear;
+    color: var(--white-75);
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--white-50);
+}
+
+.button_login {
+    padding: .5rem 2.3rem;
+    font-weight: 400;
+    background-color: var(--white);
+    border: 1px solid transparent;
+    color: var(--primary);
+    border-radius: 3rem;
+    transition: background .3s linear;
+} .button_login:hover {
+    background-color: var(--white-15);
+    border: 1px solid var(--white-50);
+    color: var(--white);
+}

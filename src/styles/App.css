@@ -1,0 +1,10 @@
+.container {
+    width: clamp(400px, 90%, 1440px);
+    margin-inline: auto;
+    min-height: 60vh;
+}
+
+.active {
+    color: var(--white) !important;
+    font-weight: 600 !important;
+}
