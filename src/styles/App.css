@@ -28,6 +28,13 @@ form {
     border: 1px solid var(--white-50);
     color: var(--white);
 }
+.button_primary:disabled {
+    opacity: .5;
+} .button_primary:disabled:hover {
+    background-color: var(--white);
+    border: 1px solid transparent;
+    color: var(--primary);
+}
 
 .button_text {
     padding: .3rem;
