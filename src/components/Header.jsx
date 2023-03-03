@@ -6,6 +6,7 @@ import { useAuthValue } from '../context/AuthContext'
 
 export default function NavBar() {
     const {user} = useAuthValue()
+    const {logOut} = useAuthentication()
 
     return (
         <header className={style.header}>
@@ -32,7 +33,7 @@ export default function NavBar() {
                 <Link to='/login'>
                     <button className='button_primary'>Login</button> 
                 </Link> ) : (
-                    <h4>Logado</h4>
+                    <button onClick={logOut}>Logado</button>
                 )
             }
             </nav>
