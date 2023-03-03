@@ -1,9 +1,8 @@
 import style from './Register.module.css'
 
-
 import { Link } from 'react-router-dom'
 import {useState, useEffect} from 'react'
-import useAuthentication from '../../hooks/useAuthentication'
+import {useAuthentication} from '../../hooks/useAuthentication'
 
 //
 import iconPerson from '../assets/person.svg'
@@ -37,8 +36,6 @@ export default function Register() {
         }
 
         const res = await createUser(user)
-
-        console.log(user)
     }
 
     useEffect(() => {
