@@ -47,7 +47,7 @@ export default function Register() {
     return (
         <div>
             <form onSubmit={handleSubmit} className={style.form}>
-                <h3>Cria sua conta Miniblog.</h3>
+                <h3>Crie sua conta Miniblog.</h3>
                 <div className={style.field}>
                     <img src={iconPerson} alt="Icone de usuário" className={style.icon}/>
                     <label className={style.label}>

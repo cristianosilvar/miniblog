@@ -3,9 +3,9 @@ import {db} from '../firebase/config'
 import {
     getAuth, 
     createUserWithEmailAndPassword,
-    singInUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     updateProfile,
-    signOut
+    signOut,
 } from 'firebase/auth'
 
 import { useState, useEffect } from 'react'
@@ -68,6 +68,34 @@ export const useAuthentication = () => {
         signOut(auth)
     }
 
+    const logIn = async (data) => {
+        checkIfisCancelled()
+
+        setLoading(true)
+        setError(false)
+
+        try {
+            
+            await signInWithEmailAndPassword(auth, data.email, data.pass)
+            setLoading(false)
+
+        } catch (error) {
+            
+            let systemErrorMessage
+
+            if (error.message.includes('user-not-found')) {
+                systemErrorMessage = 'Usuário não cadastrado'
+            } else if (error.message.includes('wrong-password')) {
+                systemErrorMessage = 'A senha esta incorreta'
+            } else {
+                systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde'
+            }
+            setLoading(false)
+
+            setError(systemErrorMessage)
+        }
+    }
+
     useEffect(() => {
         return () => setCancelled()
     }, [])
@@ -77,7 +105,8 @@ export const useAuthentication = () => {
         createUser, 
         error, 
         loading,
-        logOut
+        logOut,
+        logIn
     }
 }
 

@@ -39,6 +39,7 @@ form {
 .button_text {
     padding: .3rem;
     font-size: .9rem;
+    cursor: pointer;
     transition: all .4s;
 } .button_text:hover {
     background-color: var(--white-15);

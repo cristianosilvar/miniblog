@@ -33,7 +33,7 @@ export default function NavBar() {
                 <Link to='/login'>
                     <button className='button_primary'>Login</button> 
                 </Link> ) : (
-                    <button onClick={logOut}>Logado</button>
+                    <span  className='button_text' onClick={logOut}>Logado</span>
                 )
             }
             </nav>
