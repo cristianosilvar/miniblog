@@ -1,0 +1,27 @@
+input {
+    background-color: yellow !important; 
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .2rem .4rem;
+    border-radius: .4rem;
+    cursor: default;
+    font-size: .8rem;
+    background-color: #da051720;
+    border: 1px solid #da0517;
+}
+
+.icon_error {
+    width: 1.6rem;
+    aspect-ratio: 1/1;
+    filter: 
+        invert(19%)
+        sepia(97%)
+        saturate(3919%)
+        hue-rotate(346deg)
+        brightness(81%)
+        contrast(116%);
+}
