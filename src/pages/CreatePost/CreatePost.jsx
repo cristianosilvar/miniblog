@@ -1,8 +1,9 @@
 import style from './CreatePost.module.css'
 
-import {useNavegation} from 'react-router-dom'
-import {useAuthValue} from '../../context/AuthContext'
 import { useState } from 'react'
+import {useNavegation} from 'react-router-dom'
+import {useInsertDocument} from '../../hooks/useInsertDocument'
+import {useAuthValue} from '../../context/AuthContext'
 
 import iconError from '../assets/x.svg'
 
@@ -14,14 +15,29 @@ export function CreatePost() {
     const [tags, setTags] = useState('')
     const [formError, setFormError] = useState('')
 
+    const {user} = useAuthValue()
+
+    const [insertDocument, response] = useInsertDocument('posts')
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        setFormError('')
+
+        insertDocument({
+            title,
+            image, 
+            body, 
+            tags,
+            uid: user.uid,
+            createdBy: user.displayName
+        })
+
     }
 
     return (
         <div>
-            <h2>Novo post</h2>
-            <form onSubmit={handleSubmit}>
+            <h1 className='text-center'>Novo post</h1>
+            <form onSubmit={handleSubmit} className={style.form}>
                 <label className={style.label} >
                     <span>Título</span>
                     <input 
@@ -60,10 +76,15 @@ export function CreatePost() {
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}  />
                 </label>
-                {formError &&
+                {!response.loading ? (
+                    <button className='button_primary'>Postar</button>
+                ) : (
+                    <button className='button_primary' disabled>Postar</button>
+                )}
+                {response.error &&
                     <span className={style.error} title='Informe a mesma senha em ambos os campos'>
                         <img src={iconError} alt="" className={style.icon_error} />
-                        {formError}
+                        {response.error}
                     </span>
                 }
             </form>

@@ -23,11 +23,11 @@ body {
   min-height: 60vh;
 }
 
-input, button, select {
+input, textarea, button, select {
   font-family: 'Poppins', sans-serif;
   border: 1px solid transparent;
 }
-input:focus, button:focus, select:focus {
+input:focus, textarea:focus, button:focus, select:focus {
   outline: none;
 }
 

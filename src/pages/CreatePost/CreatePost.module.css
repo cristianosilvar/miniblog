@@ -1,5 +1,35 @@
-input {
-    background-color: yellow !important; 
+.label {
+    width: 100%;
+}
+
+.label input, .label textarea {
+    width: 100%;
+    padding: .3rem;
+    color: var(--white);
+    border-bottom: 1px solid var(--white-50);
+    background-color: transparent;
+    font-weight: 600;
+    caret-color: var(--white);
+} 
+.label input:focus{
+    border-bottom: 1px solid var(--white);
+}
+.label input::placeholder, .label  textarea::placeholder {
+    color: var(--white-75);
+}
+
+.label textarea {
+    border: 1px solid var(--white-50);
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 10vh;
+    max-height: 30vh;
+}  .label  textarea:focus {
+    border: 1px solid var(--white);
+}
+
+.form button {
+    margin: 1.5rem 0;
 }
 
 .error {
