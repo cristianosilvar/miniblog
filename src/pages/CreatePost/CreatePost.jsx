@@ -1,7 +1,7 @@
 import style from './CreatePost.module.css'
 
 import { useState } from 'react'
-import {useNavegation} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useInsertDocument} from '../../hooks/useInsertDocument'
 import {useAuthValue} from '../../context/AuthContext'
 
@@ -15,23 +15,40 @@ export function CreatePost() {
     const [tags, setTags] = useState('')
     const [formError, setFormError] = useState('')
 
+    const navigate = useNavigate()
+
     const {user} = useAuthValue()
 
-    const [insertDocument, response] = useInsertDocument('posts')
+    const {insertDocument, response} = useInsertDocument('posts')
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setFormError('')
 
+        try {
+            new URL(image)
+        } catch (error) {
+            setFormError('A imagem precisa ser uma URL')
+        }
+
+        const tagArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
+
+        if (!title || !image || !body || !tagArray) {
+            setFormError('Por favor, preencha todos os campos')
+        }
+
+        if (formError) return
+
         insertDocument({
             title,
             image, 
             body, 
-            tags,
+            tagArray,
             uid: user.uid,
             createdBy: user.displayName
         })
 
+        navigate('/')
     }
 
     return (
@@ -44,6 +61,7 @@ export function CreatePost() {
                     type="text"
                     name='title'
                     required
+                    autoComplete='off'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} />
                 </label>
@@ -53,6 +71,7 @@ export function CreatePost() {
                     type="text"
                     name='image'
                     required
+                    autoComplete='off'
                     value={image}
                     onChange={(e) => setImage(e.target.value)}  />
                 </label>
@@ -62,9 +81,9 @@ export function CreatePost() {
                     type="text" 
                     name='body'
                     required
+                    autoComplete='off'
                     value={body}
                     onChange={(e) => setBody(e.target.value)}>
-
                     </textarea>
                 </label>
                 <label className={style.label}>
@@ -73,6 +92,7 @@ export function CreatePost() {
                     type="text" 
                     name='tags'
                     required
+                    autoComplete='off'
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}  />
                 </label>
@@ -82,9 +102,15 @@ export function CreatePost() {
                     <button className='button_primary' disabled>Postar</button>
                 )}
                 {response.error &&
-                    <span className={style.error} title='Informe a mesma senha em ambos os campos'>
+                    <span className={style.error}>
                         <img src={iconError} alt="" className={style.icon_error} />
                         {response.error}
+                    </span>
+                }
+                {formError &&
+                    <span className={style.error}>
+                        <img src={iconError} alt="" className={style.icon_error} />
+                        {formError}
                     </span>
                 }
             </form>
