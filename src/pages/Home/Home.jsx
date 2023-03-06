@@ -2,17 +2,19 @@ import style from './About.module.css'
 
 import {useNavigate, Link} from 'react-router-dom'
 import { useState } from 'react'
+import {useFetchDocuments} from '../../hooks/useFetchDocuments'
 
 import { useAuthValue } from '../../context/AuthContext'
 
 //
 import imageNoPosts from '../assets/update.svg'
+import { PostDetails } from '../../components/PostDetails'
 
 
 export default function Home() {
 
     const [query, setQuery] = useState('')
-    const [posts, setPosts] = useState([])
+    const {documents: posts, loading} = useFetchDocuments('posts')
 
     const {user} = useAuthValue()
 
@@ -30,6 +32,18 @@ export default function Home() {
                 onChange={(e) => setQuery(e.target.value)} />
                 <button className='button_primary'>Pesquisar</button>
             </form>
+
+            {loading &&
+                <p>Carregando...</p>
+            }
+            {posts && 
+                posts.map((post) => (
+                    <PostDetails 
+                    key={post.id}
+                    post={post}></PostDetails>
+                ))
+            }
+
             {posts && posts.length === 0 &&
                 <div className={style.no_posts}>
                     <img src={imageNoPosts} alt="" />
