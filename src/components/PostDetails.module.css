@@ -35,7 +35,7 @@
     contrast(103%)
 }
 
-.post .imagePost {
+.image, .imagePost {
     width: 100%;
 }
 
