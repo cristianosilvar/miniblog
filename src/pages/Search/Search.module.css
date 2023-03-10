@@ -1,0 +1,24 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(100px, 100%, 864px);
+    margin-inline: auto;
+}
+
+
+.no_posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 4rem 0;
+    background-color: var(--black-15);
+}
+.no_posts img {
+    width: 15rem;
+    aspect-ratio: 1/1;
+}
