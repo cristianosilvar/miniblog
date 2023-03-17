@@ -18,6 +18,7 @@ import Register from './pages/Register/Register'
 import Header from'./components/Header'
 import Footer from'./components/Footer'
 import { Search } from './pages/Search/Search';
+import { Post } from './pages/Post/Post';
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -45,6 +46,7 @@ function App() {
               <Route path='/' element={<Home/>} />
               <Route path='/about' element={<About/>} />
               <Route path='/search' element={<Search/>}  />
+              <Route path='/posts/:id' element={<Post/>} />
               <Route 
                 path='/posts/create' 
                 element={user ? <CreatePost/> : <Navigate to='/' /> }  />
